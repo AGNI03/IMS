@@ -1,22 +1,23 @@
 #include "authService.hpp"
 
-#include "User.hpp"
-#include "userRepo.hpp"
+#include "models/User.hpp"
+#include "database/UserRepo.hpp"
 
 #include "bcrypt.h"
 
 #include <stdexcept>
 #include <iostream>
 
-User AuthService::login(const std::string& inputID, std::string& inputPwd) {
-	auto user = UserRepo::getUserById(inputID);
-	if (user._id.empty()) {
-		std::cout << "LOGIN FAILED: Received empty user for ID: " << inputID << std::endl;
-		throw std::runtime_error("user not found");
-	}
-	if (!bcrypt::validatePassword(inputPwd, user.password_hash)) {
-		throw std::runtime_error("UserID or Password is incorrect");
-	}
+Result<User> AuthService::login(const std::string& inputID, const std::string& inputPwd) {
+	try {
+		auto user = UserRepo::getUserById(inputID);
+		if (user._id.empty()) return { false, {}, ErrorType::NOT_FOUND_ERROR, "User not found" };
+		if (!bcrypt::validatePassword(inputPwd, user.password_hash)) return { false, {}, ErrorType::NOT_FOUND_ERROR, "User not found"};
 
-	return user;
+		return { true, user, ErrorType::NONE, "" };
+		
+	}
+	catch (const std::exception& e) {
+		return { false, {}, ErrorType::INTERNAL_ERROR, e.what() };
+	}
 }

@@ -10,25 +10,24 @@ bool handleError(const Result<T>& result, const std::function<void(const drogon:
 
 	switch (result.error) {
 
-	case ErrorType::VALIDATION:
-		drogon::LOG_WARNING << "Validation error: " << result.message; // Log the validation error for debugging
+	case ErrorType::VALIDATION_ERROR:
+		LOG_WARN << "Validation error: " << result.message; // Log the validation error for debugging
 		callback(createErrorResponse(drogon::k400BadRequest, result.message));
 		return true;
 
-	case ErrorType::NOT_FOUND:
-		drogon::LOG_WARNING << "Not found error: " << result.message; // Log the not found error for debugging
+	case ErrorType::NOT_FOUND_ERROR:
+		LOG_WARN << "Not found error: " << result.message; // Log the not found error for debugging
 		callback(createErrorResponse(drogon::k404NotFound, result.message));
 		return true;
 
-	case ErrorType::INTERNAL:
-		drogon::LOG_ERROR << "Internal error: " << result.message; // Log the internal error for debugging
+	case ErrorType::INTERNAL_ERROR:
+		LOG_ERROR << "Internal error: " << result.message; // Log the internal error for debugging
 		callback(createErrorResponse(drogon::k500InternalServerError, "Something went wrong"));
 		return true;
 
 	default:
-		drogon::LOG_ERROR << "Unknown error type: " << result.message; // Log the unknown error for debugging
+		LOG_ERROR << "Unknown error type: " << result.message; // Log the unknown error for debugging
 		callback(createErrorResponse(drogon::k500InternalServerError, "Something went wrong"));
 		return true;
-
 	}
 }

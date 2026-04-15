@@ -1,5 +1,5 @@
 #include "userRepo.hpp"
-#include "User.hpp"
+#include "models/User.hpp"
 
 
 UserRepo::UserRepo(const std::string& uri) {
