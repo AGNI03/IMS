@@ -19,9 +19,9 @@ void Auth::login(const drogon::HttpRequestPtr& req, std::function<void(const dro
 	std::string userId = (*jsonReq)["userId"].asString();
 	std::string password = (*jsonReq)["password"].asString();
 
-	// get the userId and password from the JSON body
-
-	// validate the userId and password
+	// login the user
+	auto result = AuthService::login(userId, password);
+	
 
 	// create a JSON response
 

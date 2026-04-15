@@ -24,3 +24,4 @@ Thumbs.db
 *.dylib
 *.out
 *.o
+/drogonConfig.json

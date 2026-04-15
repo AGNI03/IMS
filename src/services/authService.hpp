@@ -4,10 +4,10 @@
 #include <memory>
 
 
-class User; // Forward declaration
+struct Result; // Forward declaration
 
 class AuthService {
 public:
 	AuthService() = delete;
-	 static User login(const std::string& inputID, std::string& inputPwd);
+	 static Result login(const std::string& inputID, std::string& inputPwd);
 };
