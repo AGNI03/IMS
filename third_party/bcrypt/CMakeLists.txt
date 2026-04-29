@@ -1,7 +1,7 @@
 add_library(bcrypt)
 
 target_sources(bcrypt PRIVATE
-    bcrypt.cpp
+    my_bcrypt.cpp
     blowfish.cpp
 )
 

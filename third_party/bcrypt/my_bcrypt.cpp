@@ -41,7 +41,7 @@
 
 #include "node_blf.h"
 
-#include "bcrypt.h"
+#include "my_bcrypt.h"
 #include "openbsd.h"
 
 #ifdef _WIN32

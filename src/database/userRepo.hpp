@@ -7,7 +7,8 @@
 class User;
 
 class UserRepo {
-	static std::unique_ptr<mysqlx::Client> client;
+private:
+	std::unique_ptr<mysqlx::Client> client;
 	
 private:
 	UserRepo(const std::string& uri);

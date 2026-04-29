@@ -1,12 +1,10 @@
 {
-	"app": {
-		"log_level": "DEBUG",
-		"thread_num": 16,
-		"listeners": [
-			{
-				"address": "0.0.0.0",
-				"port": 8848
-			}
-		]
-	}
+	"log_level": "DEBUG",
+	"thread_num": 5,
+	"listeners": [
+		{
+			"address": "127.0.0.1",
+			"port": 8848
+		}
+	]
 }

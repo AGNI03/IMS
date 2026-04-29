@@ -21,6 +21,7 @@ target_link_libraries(ims PRIVATE
 
 target_link_libraries(ims PRIVATE
     env_loader
+    database
 )
 
 
