@@ -7,30 +7,20 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package(fmt CONFIG REQUIRED)
-find_package(mysql-concpp REQUIRED)
+find_package(mysql-concpp CONFIG REQUIRED)
 find_package(Drogon CONFIG REQUIRED)
 
-set(CONTROLLERS
-    "src/controllers/api/AuthController.cpp"
-)
 
-add_executable(ims "main.cpp" ${CONTROLLERS})
+add_executable(ims main.cpp $<TARGET_OBJECTS:core>)
 
-add_subdirectory(third_party)
 add_subdirectory(src)
+add_subdirectory(third_party)
 
 target_link_libraries(ims PRIVATE
+    core
     Drogon::Drogon
 )
 
-target_link_libraries(ims PRIVATE
-    env_loader
-    database
-)
-
-
-
-# ---- MSVC external warnings suppression ----
 if (MSVC)
     target_compile_options(ims PRIVATE
         /W4

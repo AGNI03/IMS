@@ -3,7 +3,7 @@
 #include "models/User.hpp"
 #include "database/UserRepo.hpp"
 
-#include "my_bcrypt.h"
+#include "bcrypt/my_bcrypt.h"
 
 #include <stdexcept>
 #include <iostream>

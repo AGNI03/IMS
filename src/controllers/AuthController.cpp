@@ -1,9 +1,9 @@
 #include "AuthController.hpp"
 #include "models/User.hpp"
 #include "services/authService.hpp"
-#include "Result.hpp"
-#include "HandleError.hpp"
-#include "HandleBadRequest.hpp"
+#include "utils/exceptions/Result.hpp"
+#include "utils/exceptions/HandleError.hpp"
+#include "utils/exceptions/HandleBadRequest.hpp"
 
 using namespace api::v1;
 

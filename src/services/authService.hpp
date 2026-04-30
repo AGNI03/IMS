@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "Result.hpp"
+#include "utils/exceptions/Result.hpp"
 #include "models/User.hpp"
 
 class AuthService {
