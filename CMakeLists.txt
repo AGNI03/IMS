@@ -10,7 +10,11 @@ find_package(fmt CONFIG REQUIRED)
 find_package(mysql-concpp REQUIRED)
 find_package(Drogon CONFIG REQUIRED)
 
-add_executable(ims "main.cpp")
+set(CONTROLLERS
+    "src/controllers/api/AuthController.cpp"
+)
+
+add_executable(ims "main.cpp" ${CONTROLLERS})
 
 add_subdirectory(third_party)
 add_subdirectory(src)
