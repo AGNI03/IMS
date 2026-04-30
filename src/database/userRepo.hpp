@@ -19,6 +19,6 @@ public :
 	static UserRepo& getInstance();
 	static void init();
 
-	static User getUserById(const std::string& userId);
+	static User getUserById(const std::string& user_id);
 
 };
