@@ -11,5 +11,7 @@ target_include_directories(core PUBLIC
 target_link_libraries(core PUBLIC
     Drogon::Drogon
     mysql::concpp
+    jwt-cpp::jwt-cpp
+
     third_party
 )
