@@ -11,17 +11,26 @@ find_package(mysql-concpp CONFIG REQUIRED)
 find_package(Drogon CONFIG REQUIRED)
 find_package(jwt-cpp CONFIG REQUIRED)
 
-
-add_executable(ims main.cpp $<TARGET_OBJECTS:core>)
-
 add_subdirectory(src)
 add_subdirectory(third_party)
 
+add_executable(ims main.cpp)
+
 target_link_libraries(ims PRIVATE
-    core
     Drogon::Drogon
 )
 
+# Link the controllers library with whole archive to ensure all symbols are included
+if (MSVC)
+    target_link_libraries(ims PRIVATE controllers)
+    target_link_options(ims PRIVATE /WHOLEARCHIVE:controllers)
+else()
+    target_link_libraries(ims PRIVATE
+        -Wl,--whole-archive controllers -Wl,--no-whole-archive
+    )
+endif()
+
+# Set warning levels and treat warnings as errors
 if (MSVC)
     target_compile_options(ims PRIVATE
         /W4

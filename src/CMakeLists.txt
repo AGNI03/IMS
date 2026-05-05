@@ -1,17 +1,5 @@
-file(GLOB_RECURSE SRC_FILES
-    *.cpp
-)
-
-add_library(core OBJECT ${SRC_FILES})
-
-target_include_directories(core PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}
-)
-
-target_link_libraries(core PUBLIC
-    Drogon::Drogon
-    mysql::concpp
-    jwt-cpp::jwt-cpp
-
-    third_party
-)
+add_subdirectory(controllers)
+add_subdirectory(services)
+add_subdirectory(database)
+add_subdirectory(models)
+add_subdirectory(utils)
